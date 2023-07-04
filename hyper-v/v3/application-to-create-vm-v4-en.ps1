@@ -6,6 +6,171 @@ $mainForm.Text = "Virtual Machine Creation Application"
 $mainForm.Size = New-Object System.Drawing.Size(600, 400)
 $mainForm.StartPosition = "CenterScreen"
 
+# Creating the panels for each step
+$panelName = New-Object System.Windows.Forms.Panel
+$panelName.Location = New-Object System.Drawing.Point(0, 0)
+$panelName.Size = $mainForm.ClientSize
+
+$panelParams = New-Object System.Windows.Forms.Panel
+$panelParams.Location = New-Object System.Drawing.Point(0, 0)
+$panelParams.Size = $mainForm.ClientSize
+
+$panelDisk = New-Object System.Windows.Forms.Panel
+$panelDisk.Location = New-Object System.Drawing.Point(0, 0)
+$panelDisk.Size = $mainForm.ClientSize
+
+$panelOptions = New-Object System.Windows.Forms.Panel
+$panelOptions.Location = New-Object System.Drawing.Point(0, 0)
+$panelOptions.Size = $mainForm.ClientSize
+
+# Creating the labels and textboxes for VM details in the Name panel
+$labelType = New-Object System.Windows.Forms.Label
+$labelType.Text = "Server Type:"
+$labelType.Location = New-Object System.Drawing.Point(20, 20)
+
+$textboxType = New-Object System.Windows.Forms.TextBox
+$textboxType.Location = New-Object System.Drawing.Point(180, 20)
+$textboxType.Size = New-Object System.Drawing.Size(200, 20)
+
+$labelCity = New-Object System.Windows.Forms.Label
+$labelCity.Text = "City:"
+$labelCity.Location = New-Object System.Drawing.Point(20, 60)
+
+$textboxCity = New-Object System.Windows.Forms.TextBox
+$textboxCity.Location = New-Object System.Drawing.Point(180, 60)
+$textboxCity.Size = New-Object System.Drawing.Size(200, 20)
+
+$labelCity = New-Object System.Windows.Forms.Label
+$labelCity.Text = "Owner:"
+$labelCity.Location = New-Object System.Drawing.Point(20, 60)
+
+$textboxCity = New-Object System.Windows.Forms.TextBox
+$textboxCity.Location = New-Object System.Drawing.Point(180, 60)
+$textboxCity.Size = New-Object System.Drawing.Size(200, 20)
+
+$labelCity = New-Object System.Windows.Forms.Label
+$labelCity.Text = "System:"
+$labelCity.Location = New-Object System.Drawing.Point(20, 60)
+
+$textboxCity = New-Object System.Windows.Forms.TextBox
+$textboxCity.Location = New-Object System.Drawing.Point(180, 60)
+$textboxCity.Size = New-Object System.Drawing.Size(200, 20)
+
+$labelCity = New-Object System.Windows.Forms.Label
+$labelCity.Text = "Usage:"
+$labelCity.Location = New-Object System.Drawing.Point(20, 60)
+
+$textboxCity = New-Object System.Windows.Forms.TextBox
+$textboxCity.Location = New-Object System.Drawing.Point(180, 60)
+$textboxCity.Size = New-Object System.Drawing.Size(200, 20)
+
+$labelCity = New-Object System.Windows.Forms.Label
+$labelCity.Text = "Number:"
+$labelCity.Location = New-Object System.Drawing.Point(20, 60)
+
+$textboxCity = New-Object System.Windows.Forms.TextBox
+$textboxCity.Location = New-Object System.Drawing.Point(180, 60)
+$textboxCity.Size = New-Object System.Drawing.Size(200, 20)
+# ...
+
+# Adding the controls to the Name panel
+$panelName.Controls.Add($labelType)
+$panelName.Controls.Add($textboxType)
+$panelName.Controls.Add($labelCity)
+$panelName.Controls.Add($textboxCity)
+$panelName.Controls.Add($labelOwner)
+$panelName.Controls.Add($textboxOwner)
+$panelName.Controls.Add($labelSystem)
+$panelName.Controls.Add($textboxSystem)
+$panelName.Controls.Add($labelUsage)
+$panelName.Controls.Add($textboxUsage)
+$panelName.Controls.Add($labelNumber)
+$panelName.Controls.Add($textboxNumber)
+# ...
+
+# Creating the labels and textboxes for VM parameters in the Params panel
+$labelCPU = New-Object System.Windows.Forms.Label
+$labelCPU.Text = "CPU:"
+$labelCPU.Location = New-Object System.Drawing.Point(20, 20)
+
+$textboxCPU = New-Object System.Windows.Forms.TextBox
+$textboxCPU.Location = New-Object System.Drawing.Point(180, 20)
+$textboxCPU.Size = New-Object System.Drawing.Size(200, 20)
+
+$labelRAM = New-Object System.Windows.Forms.Label
+$labelRAM.Text = "RAM:"
+$labelRAM.Location = New-Object System.Drawing.Point(20, 60)
+
+$textboxRAM = New-Object System.Windows.Forms.TextBox
+$textboxRAM.Location = New-Object System.Drawing.Point(180, 60)
+$textboxRAM.Size = New-Object System.Drawing.Size(200, 20)
+
+# ...
+
+# Adding the controls to the Params panel
+$panelParams.Controls.Add($labelCPU)
+$panelParams.Controls.Add($textboxCPU)
+$panelParams.Controls.Add($labelRAM)
+$panelParams.Controls.Add($textboxRAM)
+# ...
+
+# Function for handling the "Next" button click event
+function ButtonNext_Click {
+    if ($panelName.Visible) {
+        # Validate input from the Name panel
+        # ...
+        
+        # Hide the Name panel and show the Params panel
+        $panelName.Visible = $false
+        $panelParams.Visible = $true
+    }
+    elseif ($panelParams.Visible) {
+        # Validate input from the Params panel
+        # ...
+        
+        # Hide the Params panel and show the Disk panel
+        $panelParams.Visible = $false
+        $panelDisk.Visible = $true
+    }
+    elseif ($panelDisk.Visible) {
+        # Validate input from the Disk panel
+        # ...
+        
+        # Hide the Disk panel and show the Options panel
+        $panelDisk.Visible = $false
+        $panelOptions.Visible = $true
+    }
+}
+
+# Function for handling the "Back" button click event
+function ButtonBack_Click {
+    if ($panelParams.Visible) {
+        # Hide the Params panel and show the Name panel
+        $panelParams.Visible = $false
+        $panelName.Visible = $true
+    }
+    elseif ($panelDisk.Visible) {
+        # Hide the Disk panel and show the Params panel
+        $panelDisk.Visible = $false
+        $panelParams.Visible = $true
+    }
+    elseif ($panelOptions.Visible) {
+        # Hide the Options panel and show the Disk panel
+        $panelOptions.Visible = $false
+        $panelDisk.Visible = $true
+    }
+}
+
+# Adding the "Next" and "Back" buttons to the main form
+$mainForm.Controls.Add($buttonNext)
+$mainForm.Controls.Add($buttonBack)
+
+# Creating the main form
+$mainForm = New-Object System.Windows.Forms.Form
+$mainForm.Text = "Virtual Machine Creation Application"
+$mainForm.Size = New-Object System.Drawing.Size(600, 400)
+$mainForm.StartPosition = "CenterScreen"
+
 # Creating the labels and textboxes for VM details
 $labelType = New-Object System.Windows.Forms.Label
 $labelType.Text = "Server Type:"
@@ -169,6 +334,10 @@ $buttonCreateVM.Size = New-Object System.Drawing.Size(150, 30)
 $buttonCreateVM.Add_Click({ ButtonCreateVM_Click })
 
 # Adding controls to the main form
+$mainForm.Controls.Add($panelName)
+$mainForm.Controls.Add($panelParams)
+$mainForm.Controls.Add($panelDisk)
+$mainForm.Controls.Add($panelOptions)
 $mainForm.Controls.Add($labelType)
 $mainForm.Controls.Add($textboxType)
 $mainForm.Controls.Add($labelCity)
@@ -200,6 +369,9 @@ $mainForm.Controls.Add($labelNumaNodes)
 $mainForm.Controls.Add($textboxNumaNodes)
 $mainForm.Controls.Add($groupBoxDiskOptions)
 $mainForm.Controls.Add($buttonCreateVM)
+
+# Show the initial panel (Name panel)
+$panelName.Visible = $true
 
 # Running the application
 $mainForm.ShowDialog()
