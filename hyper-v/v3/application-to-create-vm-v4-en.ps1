@@ -131,21 +131,15 @@ $textboxNumaNodes = New-Object System.Windows.Forms.TextBox
 $textboxNumaNodes.Location = New-Object System.Drawing.Point(180, 620)
 $textboxNumaNodes.Size = New-Object System.Drawing.Size(200, 20)
 
-# Creating the group box for disk options
-$groupBoxDiskOptions = New-Object System.Windows.Forms.GroupBox
-$groupBoxDiskOptions.Text = "Disk Options"
-$groupBoxDiskOptions.Location = New-Object System.Drawing.Point(20, 320)
-$groupBoxDiskOptions.Size = New-Object System.Drawing.Size(300, 100)
+# Creating the checked list box for disk options
+$checkedListBoxDiskOptions = New-Object System.Windows.Forms.CheckedListBox
+$checkedListBoxDiskOptions.Location = New-Object System.Drawing.Point(20, 320)
+$checkedListBoxDiskOptions.Size = New-Object System.Drawing.Size(300, 100)
+$checkedListBoxDiskOptions.CheckOnClick = $true
 
-# Creating the radio buttons for disk options
-$radiobuttonExistingDisk = New-Object System.Windows.Forms.RadioButton
-$radiobuttonExistingDisk.Text = "Existing Disk"
-$radiobuttonExistingDisk.Location = New-Object System.Drawing.Point(20, 30)
-$radiobuttonExistingDisk.Checked = $true
-
-$radiobuttonNewDisk = New-Object System.Windows.Forms.RadioButton
-$radiobuttonNewDisk.Text = "New Disk"
-$radiobuttonNewDisk.Location = New-Object System.Drawing.Point(20, 60)
+# Adding disk options to the checked list box
+$checkedListBoxDiskOptions.Items.Add("Existing Disk")
+$checkedListBoxDiskOptions.Items.Add("New Disk")
 
 # Creating the textbox for disk path
 $textboxDiskPath = New-Object System.Windows.Forms.TextBox
@@ -161,11 +155,9 @@ $buttonCreateDisk.Size = New-Object System.Drawing.Size(100, 30)
 # Adding event handling for the "Create Disk" button
 $buttonCreateDisk.Add_Click({ ButtonCreateDisk_Click })
 
-# Adding controls to the disk options group box
-$groupBoxDiskOptions.Controls.Add($radiobuttonExistingDisk)
-$groupBoxDiskOptions.Controls.Add($radiobuttonNewDisk)
-$groupBoxDiskOptions.Controls.Add($textboxDiskPath)
-$groupBoxDiskOptions.Controls.Add($buttonCreateDisk)
+# Adding controls to the checked list box
+$checkedListBoxDiskOptions.Controls.Add($textboxDiskPath)
+$checkedListBoxDiskOptions.Controls.Add($buttonCreateDisk
 
 # Creating the "Create Virtual Machine" button
 $buttonCreateVM = New-Object System.Windows.Forms.Button
