@@ -116,29 +116,64 @@ $buttonNext.Location = New-Object System.Drawing.Point(500, 350)
 $buttonNext.Size = New-Object System.Drawing.Size(80, 30)
 $buttonNext.Add_Click({ ButtonNext_Click })
 
-# Function for handling the "Next" button click event
-function ButtonNext_Click {
+# Function for handling the "Next" button click event for the first panel
+function ButtonNext1_Click {
     # Validate input from the first panel
-    # ...
-    
-    # Get the selected values from the combo boxes
-    $selectedType = $comboboxType.SelectedItem.ToString().Substring(0, 1)
-    $selectedCity = $comboboxCity.SelectedItem.ToString().Substring(0, 3)
-    $selectedOwner = $comboboxOwner.SelectedItem.ToString().Substring(0, 3)
-    $selectedSystem = $comboboxSystem.SelectedItem.ToString().Substring(0, 2)
-    $selectedUsage = $comboboxUsage.SelectedItem.ToString().Substring(0, 3)
+    if ($textboxType.Text -eq "" -or $textboxCity.Text -eq "" -or $textboxOwner.Text -eq "" -or $textboxSystem.Text -eq "" -or $textboxUsage.Text -eq "" -or $textboxNumber.Text -eq "") {
+        [System.Windows.Forms.MessageBox]::Show("Please fill in all the required fields.", "Validation Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+        return
+    }
+
+    # Get the values entered by the user
+    $type = $textboxType.Text
+    $city = $textboxCity.Text
+    $owner = $textboxOwner.Text
+    $system = $textboxSystem.Text
+    $usage = $textboxUsage.Text
     $number = $textboxNumber.Text
-    
-    # Generate the formatted name
-    $formattedName = "$selectedType$selectedCity$selectedOwner$selectedSystem$selectedUsage$number"
-    
+
+    # Format the name based on the input values
+    $formattedName = "{0}{1}{2}{3}{4}{5}{6}" -f $type, $city, $owner, $system, $usage, $number
+
     # Pass the formatted name to the next panel or store it in a variable for further use
     # ...
-    
-    # Hide the Name panel and show the next panel
+
+    # Hide the first panel
     $panelName.Visible = $false
+
+    # Show the second panel
+    $panelParameters.Visible = $true
+}
+
+# Function for handling the "Next" button click event for the second panel
+function ButtonNext2_Click {
+    # Validate input from the second panel
+    if ($textboxCPU.Text -eq "" -or $textboxRAM.Text -eq "" -or $textboxDiskSize.Text -eq "") {
+        [System.Windows.Forms.MessageBox]::Show("Please fill in all the required fields.", "Validation Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+        return
+    }
+
+    # Get the values entered by the user
+    $cpu = $textboxCPU.Text
+    $ram = $textboxRAM.Text
+    $diskSize = $textboxDiskSize.Text
+
+    # Pass the parameters to the next step or store them in variables for further use
+    # ...
+
+    # Hide the second panel
+    $panelParameters.Visible = $false
+
+    # Show the next panel
     $panelNext.Visible = $true
 }
+
+# Adding event handling for the "Next" button in the first panel
+$buttonNext1.Add_Click({ ButtonNext1_Click })
+
+# Adding event handling for the "Next" button in the second panel
+$buttonNext2.Add_Click({ ButtonNext2_Click })
+
 
 # Creating the second panel for VM parameters
 $panelParameters = New-Object System.Windows.Forms.Panel
