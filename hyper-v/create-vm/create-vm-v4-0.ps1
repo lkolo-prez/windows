@@ -140,6 +140,78 @@ function ButtonNext_Click {
     $panelNext.Visible = $true
 }
 
+# Creating the second panel for VM parameters
+$panelParameters = New-Object System.Windows.Forms.Panel
+$panelParameters.Location = New-Object System.Drawing.Point(0, 0)
+$panelParameters.Size = New-Object System.Drawing.Size(600, 400)
+$panelParameters.Visible = $false
+
+$labelCPU = New-Object System.Windows.Forms.Label
+$labelCPU.Text = "CPU:"
+$labelCPU.Location = New-Object System.Drawing.Point(20, 20)
+
+$textboxCPU = New-Object System.Windows.Forms.TextBox
+$textboxCPU.Location = New-Object System.Drawing.Point(180, 20)
+$textboxCPU.Size = New-Object System.Drawing.Size(200, 20)
+
+$labelRAM = New-Object System.Windows.Forms.Label
+$labelRAM.Text = "RAM:"
+$labelRAM.Location = New-Object System.Drawing.Point(20, 60)
+
+$textboxRAM = New-Object System.Windows.Forms.TextBox
+$textboxRAM.Location = New-Object System.Drawing.Point(180, 60)
+$textboxRAM.Size = New-Object System.Drawing.Size(200, 20)
+
+$labelDiskSize = New-Object System.Windows.Forms.Label
+$labelDiskSize.Text = "Disk Size:"
+$labelDiskSize.Location = New-Object System.Drawing.Point(20, 100)
+
+$textboxDiskSize = New-Object System.Windows.Forms.TextBox
+$textboxDiskSize.Location = New-Object System.Drawing.Point(180, 100)
+$textboxDiskSize.Size = New-Object System.Drawing.Size(200, 20)
+
+# Creating the "Next" button for the second panel
+$buttonNext2 = New-Object System.Windows.Forms.Button
+$buttonNext2.Text = "Next"
+$buttonNext2.Location = New-Object System.Drawing.Point(500, 350)
+$buttonNext2.Size = New-Object System.Drawing.Size(80, 30)
+$buttonNext2.Add_Click({ ButtonNext2_Click })
+
+# Function for handling the "Next" button click event for the second panel
+function ButtonNext2_Click {
+    # Validate input from the second panel
+    # ...
+    
+    # Get the values entered by the user
+    $cpu = $textboxCPU.Text
+    $ram = $textboxRAM.Text
+    $diskSize = $textboxDiskSize.Text
+    
+    # Pass the values to the next panel or store them in variables for further use
+    # ...
+    
+    # Hide the Parameters panel and show the next panel
+    $panelParameters.Visible = $false
+    $panelNext.Visible = $true
+}
+
+# Adding controls to the second panel
+$panelParameters.Controls.Add($labelCPU)
+$panelParameters.Controls.Add($textboxCPU)
+$panelParameters.Controls.Add($labelRAM)
+$panelParameters.Controls.Add($textboxRAM)
+$panelParameters.Controls.Add($labelDiskSize)
+$panelParameters.Controls.Add($textboxDiskSize)
+
+# Adding the "Next" button for the second panel
+$panelParameters.Controls.Add($buttonNext2)
+
+# Adding the second panel to the main form
+$mainForm.Controls.Add($panelParameters)
+
+
+
+
 # Adding controls to the main form
 $mainForm.Controls.Add($panelName)
 $mainForm.Controls.Add($buttonNext)
