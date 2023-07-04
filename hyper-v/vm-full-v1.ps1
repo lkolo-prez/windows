@@ -20,22 +20,22 @@ param (
     [Parameter(Mandatory=$false)]
     [string]$BootDevice = "VHD",
 
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
     [string]$ISOPath,
 
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
     [int]$Generation = 2,
 
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
     [int]$DynamicMemoryMinimumMB,
 
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
     [int]$DynamicMemoryMaximumMB,
 
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
     [switch]$DynamicMemoryEnabled,
 
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
     [switch]$SecureBootEnabled,
 
     [Parameter(Mandatory=$false)]
