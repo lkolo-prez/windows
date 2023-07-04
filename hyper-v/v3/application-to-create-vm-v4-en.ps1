@@ -72,13 +72,13 @@ $textboxRAM = New-Object System.Windows.Forms.TextBox
 $textboxRAM.Location = New-Object System.Drawing.Point(180, 300)
 $textboxRAM.Size = New-Object System.Drawing.Size(200, 20)
 
-$labelDiskPath = New-Object System.Windows.Forms.Label
-$labelDiskPath.Text = "Disk Path:"
-$labelDiskPath.Location = New-Object System.Drawing.Point(20, 340)
+#$labelDiskPath = New-Object System.Windows.Forms.Label
+#$labelDiskPath.Text = "Disk Path:"
+#$labelDiskPath.Location = New-Object System.Drawing.Point(20, 340)
 
-$textboxDiskPath = New-Object System.Windows.Forms.TextBox
-$textboxDiskPath.Location = New-Object System.Drawing.Point(180, 340)
-$textboxDiskPath.Size = New-Object System.Drawing.Size(200, 20)
+#$textboxDiskPath = New-Object System.Windows.Forms.TextBox
+#$textboxDiskPath.Location = New-Object System.Drawing.Point(180, 340)
+#$textboxDiskPath.Size = New-Object System.Drawing.Size(200, 20)
 
 # Creating the label and textbox for ISO path
 $labelISOPath = New-Object System.Windows.Forms.Label
@@ -131,10 +131,33 @@ $textboxNumaNodes = New-Object System.Windows.Forms.TextBox
 $textboxNumaNodes.Location = New-Object System.Drawing.Point(180, 620)
 $textboxNumaNodes.Size = New-Object System.Drawing.Size(200, 20)
 
+# Creating the radio buttons for disk options
+$radiobuttonExistingDisk = New-Object System.Windows.Forms.RadioButton
+$radiobuttonExistingDisk.Text = "Existing Disk"
+$radiobuttonExistingDisk.Location = New-Object System.Drawing.Point(20, 620)
+
+$radiobuttonNewDisk = New-Object System.Windows.Forms.RadioButton
+$radiobuttonNewDisk.Text = "New Disk"
+$radiobuttonNewDisk.Location = New-Object System.Drawing.Point(20, 650)
+
+# Creating the textbox for disk path
+$textboxDiskPath = New-Object System.Windows.Forms.TextBox
+$textboxDiskPath.Location = New-Object System.Drawing.Point(180, 620)
+$textboxDiskPath.Size = New-Object System.Drawing.Size(200, 20)
+
+# Creating the "Create Disk" button
+$buttonCreateDisk = New-Object System.Windows.Forms.Button
+$buttonCreateDisk.Text = "Create Disk"
+$buttonCreateDisk.Location = New-Object System.Drawing.Point(180, 650)
+$buttonCreateDisk.Size = New-Object System.Drawing.Size(100, 30)
+
+# Adding event handling for the "Create Disk" button
+$buttonCreateDisk.Add_Click({ ButtonCreateDisk_Click })
+
 # Creating the "Create Virtual Machine" button
 $buttonCreateVM = New-Object System.Windows.Forms.Button
 $buttonCreateVM.Text = "Create Virtual Machine"
-$buttonCreateVM.Location = New-Object System.Drawing.Point(20, 660)
+$buttonCreateVM.Location = New-Object System.Drawing.Point(20, 700)
 $buttonCreateVM.Size = New-Object System.Drawing.Size(150, 30)
 
 # Adding event handling for the "Create Virtual Machine" button
