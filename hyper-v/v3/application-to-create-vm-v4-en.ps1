@@ -157,7 +157,7 @@ $buttonCreateDisk.Add_Click({ ButtonCreateDisk_Click })
 
 # Adding controls to the checked list box
 $checkedListBoxDiskOptions.Controls.Add($textboxDiskPath)
-$checkedListBoxDiskOptions.Controls.Add($buttonCreateDisk
+$checkedListBoxDiskOptions.Controls.Add($buttonCreateDisk)
 
 # Creating the "Create Virtual Machine" button
 $buttonCreateVM = New-Object System.Windows.Forms.Button
