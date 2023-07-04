@@ -1,0 +1,13 @@
+# Wczytaj wartości parametrów z pliku
+$parametry = Get-Content -Path "env.txt" | ConvertFrom-StringData
+
+# Pobierz wartości poszczególnych parametrów
+$VMName = $parametry["VMName"]
+$VMPath = $parametry["VMPath"]
+$VHDPath = $parametry["VHDPath"]
+$SwitchName = $parametry["SwitchName"]
+$MemoryGB = $parametry["MemoryGB"]
+$CPUCount = $parametry["CPUCount"]
+
+# Wywołaj skrypt do tworzenia maszyny wirtualnej
+.\create-vm.ps -VMName $VMName -VMPath $VMPath -VHDPath $VHDPath -SwitchName $SwitchName -MemoryGB $MemoryGB -CPUCount $CPUCount
