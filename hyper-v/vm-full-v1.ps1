@@ -32,7 +32,7 @@ param (
     [Parameter(Mandatory=$true)]
     [int]$DynamicMemoryMaximumMB,
 
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory=$false)]
     [switch]$DynamicMemoryEnabled,
 
     [Parameter(Mandatory=$true)]
